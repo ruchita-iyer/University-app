@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="course" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="category" inverseEntity="Course"/>
+    </entity>
+    <entity name="College" representedClassName="College" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="images" optional="YES" attributeType="Binary"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="course" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="college" inverseEntity="Course"/>
+        <relationship name="program" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Program" inverseName="college" inverseEntity="Program"/>
+    </entity>
+    <entity name="Course" representedClassName="Course" syncable="YES">
+        <attribute name="categoryid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="collegeid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="programid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="course" inverseEntity="Category"/>
+        <relationship name="college" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="College" inverseName="course" inverseEntity="College"/>
+        <relationship name="program" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Program" inverseName="course" inverseEntity="Program"/>
+    </entity>
+    <entity name="Program" representedClassName="Program" syncable="YES">
+        <attribute name="collegeid" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="college" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="College" inverseName="program" inverseEntity="College"/>
+        <relationship name="course" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="program" inverseEntity="Course"/>
+    </entity>
+    <elements>
+        <element name="Category" positionX="-36" positionY="54" width="128" height="88"/>
+        <element name="College" positionX="-63" positionY="-18" width="128" height="133"/>
+        <element name="Course" positionX="-27" positionY="63" width="128" height="163"/>
+        <element name="Program" positionX="-54" positionY="18" width="128" height="118"/>
+    </elements>
+</model>
